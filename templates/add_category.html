@@ -1,0 +1,21 @@
+<!-- Halaman Tambah Kategori -->
+{% extends 'base.html' %}
+
+{% block title %}Tambah Kategori{% endblock %}
+
+{% block content %}
+    <div class="container mt-80" style="margin-top: 80px; background-color:rgb(15, 99, 99); color:white; border-radius: 15px;">
+        <h1 style="text-align: center;" class="mb-4">Tambah Kategori</h1>
+
+        <form method="post" action="{{ url_for('add_category') }}">
+            <div class="form-group">
+                <label for="categoryName">Nama Kategori</label>
+                <input type="text" class="form-control" id="categoryName" name="categoryName">
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3 mb-5">Tambah Kategori</button>
+            <button class="btn btn-primary mt-3 mb-5" href="{{ url_for('inventory') }}">Batal</a></button>
+        </form>
+    </div>
+    
+{% endblock %}

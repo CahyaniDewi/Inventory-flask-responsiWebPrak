@@ -1,0 +1,44 @@
+<!-- Halaman edit item -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Item{% endblock %}
+
+{% block content %}
+
+    <h1 class="mt-80" style="margin-top: 80px; text-align:center;">EDIT ITEM</h1>
+
+    <form method="POST" style=" background-color:rgb(15, 99, 99); color:white; border-radius: 8px; margin: 4px; padding: 8px;">
+        <div class="form-group">
+            <label for="nama">Nama:</label>
+            <input type="text" class="form-control" name="nama" value="{{ item.nama }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="kategori">Kategori:</label>
+            <input type="text" class="form-control" name="kategori" value="{{ item.kategori }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="number" class="form-control" name="jumlah" value="{{ item.jumlah }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="harga_beli">Harga Beli:</label>
+            <input type="number" step="0.01" class="form-control" name="harga_beli" value="{{ item.harga_beli }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="harga_jual">Harga Jual:</label>
+            <input type="number" step="0.01" class="form-control" name="harga_jual" value="{{ item.harga_jual }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="keterangan">Keterangan:</label>
+            <textarea class="form-control" name="keterangan" rows="3">{{ item.keterangan }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Item</button>
+        <a href="{{ url_for('inventory') }}" class="btn btn-secondary">Batal</a>
+    </form>
+{% endblock %}

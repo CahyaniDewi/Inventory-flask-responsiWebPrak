@@ -1,0 +1,130 @@
+<!-- Halaman untuk extends jika dibutuhkan ambil sini -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Res Inventory{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+
+    {% block head %}  
+    {% endblock %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-primary fixed-top">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Nimade</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if 'username' in session %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('index') }}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('inventory') }}">Inventory</a>
+                    </li>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <nav style="background-color: rgb(74, 74, 114); color:white;" id="sidebar" class="col-md-3 col-lg-2 d-md-block ">
+                <div class="sidebar-sticky">
+                    <div class="container-fluid">
+                        <h5  class="mt-4">Sidebar Content</h5>
+                        <hr class="my-4">
+                        
+                        <ul class="nav flex-column">      
+                            <li>
+                                <a href="{{ url_for('index') }}" style="color: white;" class="btn btn-outline-primary mb-2">Beranda</a>
+
+                            </li>                 
+                            <li>
+                                <a href="{{ url_for('inventory') }}" style="color: white;" class="btn btn-warning mb-2">Inventory</a>
+                            </li>                           
+                            <li>
+                                <a href="{{ url_for('add_category') }}" class="btn btn-success mb-2"><i class="fas fa-plus"></i>Category</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="container mt-4">
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer style="background-color: rgb(28, 7, 87);" class=" text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Kontak Kami</h5>
+                    <p>Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau komentar.</p>
+                    <p>Email: cay@example.com</p>
+                    <p>Telepon: (123) 456-7890</p>
+
+                    
+                    <h5>Ikuti / Cek Project</h5>
+                    <a href="https://www.instagram.com/cahyanidewi__/" title="cahyanidewii__"><i style="color: white;" class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/cahyani-dewi-9054a1274/" title="Cahyani-dewi"><i style="color: white;" class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/CahyaniDewi" title="CahyaniDewi"><i style="color: white;" class="fab fa-github"></i></a>
+    
+                </div>
+                <div class="col-lg-6">
+                    <h5>Formulir Kontak</h5>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nama">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email ">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Pesan "></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-light">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="background-color:rgb(7, 2, 37);" class="text-center py-3">
+            <p>&copy; 2023 niMade inventory. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

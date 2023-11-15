@@ -1,0 +1,22 @@
+<!-- Halaman Lihat item per-id -->
+{% extends 'base.html' %}
+
+{% block title %}Lihat Item{% endblock %}
+
+{% block content %}
+    <h1 class="container mt-80" style="margin-top: 80px; text-align:center; color:rgb(55, 0, 100);">LIHAT DETAILS BARANG</h1>
+
+    <div class="card mt-4" style="background-color:rgb(15, 99, 99); color:white;">
+        <div class="card-body">
+            <p>ID: {{ item.id }}</p>
+            <p>Nama: {{ item.nama }}</p>
+            <p>Kategori: {{ item.kategori }}</p>
+            <p>Jumlah: {{ item.jumlah }}</p>
+            <p>Harga Beli: Rp{{ item.harga_beli }}</p>
+            <p>Harga Jual: Rp{{ item.harga_jual }}</p>
+            <p>Keterangan: {{ item.keterangan }}</p>
+
+            <a href="{{ url_for('inventory') }}" class="btn btn-primary">Kembali ke Inventori</a>
+        </div>
+    </div>
+{% endblock %}
