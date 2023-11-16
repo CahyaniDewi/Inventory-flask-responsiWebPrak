@@ -33,7 +33,6 @@ def index():
     cur.execute("SELECT * FROM inventories")
     inventory = cur.fetchall()
 
-    # Calculate category counts
     categories = {}
     quantity_data = {}  # Dictionary untuk menyimpan kuantitas barang per kategori
 
@@ -46,7 +45,6 @@ def index():
 
     cur.close()
 
-    # Pastikan categories dan quantity_data tidak kosong sebelum mengirimkannya ke template
     categories = categories if categories else {}
     quantity_data = quantity_data if quantity_data else {}
 
@@ -104,7 +102,6 @@ def logout():
         session.clear()
         flash(f'Pengguna {username} telah logout', 'success')
     return redirect(url_for('login'))
-
 
 # route inventory
 @app.route('/inventory')
